@@ -203,7 +203,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
         }
-//        super.onActivityResult(requestCode, resultCode, data);
     }
     void listPairedDevices() {
         if (mBluetoothAdapter.isEnabled()) {
@@ -216,7 +215,6 @@ public class MainActivity extends AppCompatActivity {
                 mListPairedDevices = new ArrayList<String>();
                 for (BluetoothDevice device : mPairedDevices) {
                     mListPairedDevices.add(device.getName());
-                    //mListPairedDevices.add(device.getName() + "\n" + device.getAddress());
                 }
                 final CharSequence[] items = mListPairedDevices.toArray(new CharSequence[mListPairedDevices.size()]);
                 mListPairedDevices.toArray(new CharSequence[mListPairedDevices.size()]);
@@ -334,13 +332,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
                 if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                        // TODO: Consider calling
-                        //    ActivityCompat#requestPermissions
-                        // here to request the missing permissions, and then overriding
-                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                        //                                          int[] grantResults)
-                        // to handle the case where the user grants the permission. See the documentation
-                        // for ActivityCompat#requestPermissions for more details.
                     return;
                 }
                 try {
@@ -401,31 +392,6 @@ public class MainActivity extends AppCompatActivity {
 
         textToSpeech.speak(stringResult, TextToSpeech.QUEUE_FLUSH, null, null);
     }
-
-    //ocr결과값 tvSendData로 복사
-//    public void resultMove(){
-//        setContentView(R.layout.activity_main);
-//        TextView textView = (TextView)findViewById(R.id.textView);
-//        textView.setText(stringResult);
-//
-//         mBtnSendData.setOnClickListener(new Button.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (mThreadConnectedBluetooth != null) {
-//                    mThreadConnectedBluetooth.write(mTvSendData.getText().toString());
-//                    mTvSendData.setText("");
-//                }
-//            }
-//        });
-//        textToSpeech.speak(stringResult, TextToSpeech.QUEUE_FLUSH, null, null);
-//
-//        String str;
-//        str = textView.getText().toString();
-//
-//        EditText editText = (EditText)findViewById(R.id.tvSendData);
-//
-//        editText.setText(str);
-//    }
 
     public void buttonStart(View view) {
         Intent intent = new Intent(this,OcrActivity.class);
